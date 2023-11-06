@@ -1,0 +1,35 @@
+# Compile of barrel_shifter.sv was successful.
+# Compile of barrel_shifter_testbench.sv was successful.
+# Compile of mux_2x1_behavioral.sv was successful.
+# 3 compiles, 0 failed with no errors.
+vsim -gui work.barrel_shifter_testbench
+# vsim -gui work.barrel_shifter_testbench 
+# Start time: 21:46:17 on Apr 26,2021
+# Loading sv_std.std
+# Loading work.barrel_shifter_testbench
+# Loading work.barrel_shifter
+# Loading work.mux_2x1
+add wave -position insertpoint sim:/barrel_shifter_testbench/*
+run -all
+#  time=0,  select=0  shift_value=00  din=0000 dout=0000
+#  time=100,  select=0  shift_value=01  din=1000 dout=0100
+#  time=200,  select=0  shift_value=10  din=1000 dout=0010
+#  time=300,  select=0  shift_value=11  din=1000 dout=0001
+#  time=400,  select=1  shift_value=00  din=0000 dout=0000
+#  time=500,  select=1  shift_value=01  din=1011 dout=1101
+#  time=600,  select=1  shift_value=10  din=1011 dout=1110
+#  time=700,  select=1  shift_value=11  din=1011 dout=0111
+#  time=800,  select=0  shift_value=00  din=0000 dout=0000
+#  time=900,  select=0  shift_value=01  din=0001 dout=0010
+#  time=1000,  select=0  shift_value=10  din=0001 dout=0100
+#  time=1100,  select=0  shift_value=11  din=0001 dout=1000
+#  time=1200,  select=1  shift_value=00  din=0000 dout=0000
+#  time=1300,  select=1  shift_value=01  din=1011 dout=0111
+#  time=1400,  select=1  shift_value=10  din=1011 dout=1110
+#  time=1500,  select=1  shift_value=11  din=1011 dout=1101
+# ** Note: $finish    : C:/Users/gyaga/OneDrive/Desktop/Homework4/Lab4/barrel_shifter_testbench.sv(134)
+#    Time: 1600 ns  Iteration: 0  Instance: /barrel_shifter_testbench
+# 1
+# Break in Module barrel_shifter_testbench at C:/Users/gyaga/OneDrive/Desktop/Homework4/Lab4/barrel_shifter_testbench.sv line 134
+# End time: 21:48:23 on Apr 26,2021, Elapsed time: 0:02:06
+# Errors: 0, Warnings: 2

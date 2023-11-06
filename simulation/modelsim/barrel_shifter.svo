@@ -1,0 +1,434 @@
+// Copyright (C) 2020  Intel Corporation. All rights reserved.
+// Your use of Intel Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Intel Program License 
+// Subscription Agreement, the Intel Quartus Prime License Agreement,
+// the Intel FPGA IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Intel and sold by Intel or its authorized distributors.  Please
+// refer to the applicable agreement for further details, at
+// https://fpgasoftware.intel.com/eula.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition"
+
+// DATE "04/26/2021 21:39:14"
+
+// 
+// Device: Altera EP2AGX45DF29I5 Package FBGA780
+// 
+
+// 
+// This Verilog file should be used for ModelSim-Altera (SystemVerilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module barrel_shifter (
+	select,
+	direction,
+	shift_value,
+	din,
+	dout);
+input 	logic select ;
+input 	logic direction ;
+input 	logic [1:0] shift_value ;
+input 	logic [3:0] din ;
+output 	logic [3:0] dout ;
+
+// Design Ports Information
+// dout[0]	=>  Location: PIN_AE16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dout[1]	=>  Location: PIN_AD15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dout[2]	=>  Location: PIN_AH19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dout[3]	=>  Location: PIN_AC15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// select	=>  Location: PIN_AG18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// direction	=>  Location: PIN_AG15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// shift_value[0]	=>  Location: PIN_AA19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// din[2]	=>  Location: PIN_AH18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// shift_value[1]	=>  Location: PIN_AG19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// din[0]	=>  Location: PIN_AH16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// din[3]	=>  Location: PIN_AH17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// din[1]	=>  Location: PIN_Y18,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \dout[0]~output_o ;
+wire \dout[1]~output_o ;
+wire \dout[2]~output_o ;
+wire \dout[3]~output_o ;
+wire \din[3]~input_o ;
+wire \select~input_o ;
+wire \din[2]~input_o ;
+wire \din[1]~input_o ;
+wire \shift_value[1]~input_o ;
+wire \direction~input_o ;
+wire \din[0]~input_o ;
+wire \mux3|out~0_combout ;
+wire \mux1|out~0_combout ;
+wire \mux0|out~0_combout ;
+wire \shift_value[0]~input_o ;
+wire \dout~0_combout ;
+wire \mux2|out~0_combout ;
+wire \dout~1_combout ;
+wire \dout~2_combout ;
+wire \dout~3_combout ;
+
+
+// Location: IOOBUF_X19_Y0_N2
+arriaii_io_obuf \dout[0]~output (
+	.i(\dout~0_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[0]~output .bus_hold = "false";
+defparam \dout[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X19_Y0_N98
+arriaii_io_obuf \dout[1]~output (
+	.i(\dout~1_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[1]~output .bus_hold = "false";
+defparam \dout[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X22_Y0_N67
+arriaii_io_obuf \dout[2]~output (
+	.i(\dout~2_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[2]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[2]~output .bus_hold = "false";
+defparam \dout[2]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X19_Y0_N36
+arriaii_io_obuf \dout[3]~output (
+	.i(\dout~3_combout ),
+	.oe(vcc),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dout[3]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dout[3]~output .bus_hold = "false";
+defparam \dout[3]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X24_Y0_N94
+arriaii_io_ibuf \din[3]~input (
+	.i(din[3]),
+	.ibar(gnd),
+	.o(\din[3]~input_o ));
+// synopsys translate_off
+defparam \din[3]~input .bus_hold = "false";
+defparam \din[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X24_Y0_N1
+arriaii_io_ibuf \select~input (
+	.i(select),
+	.ibar(gnd),
+	.o(\select~input_o ));
+// synopsys translate_off
+defparam \select~input .bus_hold = "false";
+defparam \select~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X24_Y0_N63
+arriaii_io_ibuf \din[2]~input (
+	.i(din[2]),
+	.ibar(gnd),
+	.o(\din[2]~input_o ));
+// synopsys translate_off
+defparam \din[2]~input .bus_hold = "false";
+defparam \din[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X22_Y0_N32
+arriaii_io_ibuf \din[1]~input (
+	.i(din[1]),
+	.ibar(gnd),
+	.o(\din[1]~input_o ));
+// synopsys translate_off
+defparam \din[1]~input .bus_hold = "false";
+defparam \din[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X22_Y0_N1
+arriaii_io_ibuf \shift_value[1]~input (
+	.i(shift_value[1]),
+	.ibar(gnd),
+	.o(\shift_value[1]~input_o ));
+// synopsys translate_off
+defparam \shift_value[1]~input .bus_hold = "false";
+defparam \shift_value[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X25_Y0_N1
+arriaii_io_ibuf \direction~input (
+	.i(direction),
+	.ibar(gnd),
+	.o(\direction~input_o ));
+// synopsys translate_off
+defparam \direction~input .bus_hold = "false";
+defparam \direction~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X24_Y0_N32
+arriaii_io_ibuf \din[0]~input (
+	.i(din[0]),
+	.ibar(gnd),
+	.o(\din[0]~input_o ));
+// synopsys translate_off
+defparam \din[0]~input .bus_hold = "false";
+defparam \din[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N4
+arriaii_lcell_comb \mux3|out~0 (
+// Equation(s):
+// \mux3|out~0_combout  = ( !\shift_value[1]~input_o  & ( (((!\direction~input_o  & (\din[3]~input_o )) # (\direction~input_o  & ((\din[0]~input_o ))))) ) ) # ( \shift_value[1]~input_o  & ( ((\select~input_o  & ((!\direction~input_o  & ((\din[1]~input_o ))) 
+// # (\direction~input_o  & (\din[2]~input_o ))))) ) )
+
+	.dataa(!\din[3]~input_o ),
+	.datab(!\select~input_o ),
+	.datac(!\din[2]~input_o ),
+	.datad(!\din[1]~input_o ),
+	.datae(!\shift_value[1]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(!\din[0]~input_o ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\mux3|out~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \mux3|out~0 .extended_lut = "on";
+defparam \mux3|out~0 .lut_mask = 64'h555500330F0F0303;
+defparam \mux3|out~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N10
+arriaii_lcell_comb \mux1|out~0 (
+// Equation(s):
+// \mux1|out~0_combout  = ( \din[3]~input_o  & ( \direction~input_o  & ( (!\shift_value[1]~input_o  & ((\din[2]~input_o ))) # (\shift_value[1]~input_o  & (\din[0]~input_o )) ) ) ) # ( !\din[3]~input_o  & ( \direction~input_o  & ( (!\shift_value[1]~input_o  & 
+// ((\din[2]~input_o ))) # (\shift_value[1]~input_o  & (\din[0]~input_o )) ) ) ) # ( \din[3]~input_o  & ( !\direction~input_o  & ( (\shift_value[1]~input_o ) # (\din[1]~input_o ) ) ) ) # ( !\din[3]~input_o  & ( !\direction~input_o  & ( (\din[1]~input_o  & 
+// !\shift_value[1]~input_o ) ) ) )
+
+	.dataa(!\din[1]~input_o ),
+	.datab(!\din[0]~input_o ),
+	.datac(!\shift_value[1]~input_o ),
+	.datad(!\din[2]~input_o ),
+	.datae(!\din[3]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\mux1|out~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \mux1|out~0 .extended_lut = "off";
+defparam \mux1|out~0 .lut_mask = 64'h50505F5F03F303F3;
+defparam \mux1|out~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N32
+arriaii_lcell_comb \mux0|out~0 (
+// Equation(s):
+// \mux0|out~0_combout  = ( \din[3]~input_o  & ( \direction~input_o  & ( (!\shift_value[1]~input_o ) # (\din[1]~input_o ) ) ) ) # ( !\din[3]~input_o  & ( \direction~input_o  & ( (\din[1]~input_o  & \shift_value[1]~input_o ) ) ) ) # ( \din[3]~input_o  & ( 
+// !\direction~input_o  & ( (!\shift_value[1]~input_o  & (\din[0]~input_o )) # (\shift_value[1]~input_o  & ((\din[2]~input_o ))) ) ) ) # ( !\din[3]~input_o  & ( !\direction~input_o  & ( (!\shift_value[1]~input_o  & (\din[0]~input_o )) # 
+// (\shift_value[1]~input_o  & ((\din[2]~input_o ))) ) ) )
+
+	.dataa(!\din[1]~input_o ),
+	.datab(!\din[0]~input_o ),
+	.datac(!\din[2]~input_o ),
+	.datad(!\shift_value[1]~input_o ),
+	.datae(!\din[3]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\mux0|out~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \mux0|out~0 .extended_lut = "off";
+defparam \mux0|out~0 .lut_mask = 64'h330F330F0055FF55;
+defparam \mux0|out~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: IOIBUF_X22_Y0_N94
+arriaii_io_ibuf \shift_value[0]~input (
+	.i(shift_value[0]),
+	.ibar(gnd),
+	.o(\shift_value[0]~input_o ));
+// synopsys translate_off
+defparam \shift_value[0]~input .bus_hold = "false";
+defparam \shift_value[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N38
+arriaii_lcell_comb \dout~0 (
+// Equation(s):
+// \dout~0_combout  = ( \shift_value[0]~input_o  & ( \direction~input_o  & ( (\select~input_o  & \mux0|out~0_combout ) ) ) ) # ( !\shift_value[0]~input_o  & ( \direction~input_o  & ( \mux3|out~0_combout  ) ) ) # ( \shift_value[0]~input_o  & ( 
+// !\direction~input_o  & ( \mux1|out~0_combout  ) ) ) # ( !\shift_value[0]~input_o  & ( !\direction~input_o  & ( \mux0|out~0_combout  ) ) )
+
+	.dataa(!\mux3|out~0_combout ),
+	.datab(!\mux1|out~0_combout ),
+	.datac(!\select~input_o ),
+	.datad(!\mux0|out~0_combout ),
+	.datae(!\shift_value[0]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\dout~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \dout~0 .extended_lut = "off";
+defparam \dout~0 .lut_mask = 64'h00FF33335555000F;
+defparam \dout~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N0
+arriaii_lcell_comb \mux2|out~0 (
+// Equation(s):
+// \mux2|out~0_combout  = ( !\shift_value[1]~input_o  & ( (((!\direction~input_o  & (\din[2]~input_o )) # (\direction~input_o  & ((\din[1]~input_o ))))) ) ) # ( \shift_value[1]~input_o  & ( ((\select~input_o  & ((!\direction~input_o  & ((\din[0]~input_o ))) 
+// # (\direction~input_o  & (\din[3]~input_o ))))) ) )
+
+	.dataa(!\din[2]~input_o ),
+	.datab(!\select~input_o ),
+	.datac(!\din[3]~input_o ),
+	.datad(!\din[0]~input_o ),
+	.datae(!\shift_value[1]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(!\din[1]~input_o ),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\mux2|out~0_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \mux2|out~0 .extended_lut = "on";
+defparam \mux2|out~0 .lut_mask = 64'h555500330F0F0303;
+defparam \mux2|out~0 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N22
+arriaii_lcell_comb \dout~1 (
+// Equation(s):
+// \dout~1_combout  = ( \direction~input_o  & ( (!\shift_value[0]~input_o  & ((\mux2|out~0_combout ))) # (\shift_value[0]~input_o  & (\mux3|out~0_combout )) ) ) # ( !\direction~input_o  & ( (!\shift_value[0]~input_o  & (\mux1|out~0_combout )) # 
+// (\shift_value[0]~input_o  & ((\mux2|out~0_combout ))) ) )
+
+	.dataa(!\mux3|out~0_combout ),
+	.datab(!\mux1|out~0_combout ),
+	.datac(!\mux2|out~0_combout ),
+	.datad(!\shift_value[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\dout~1_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \dout~1 .extended_lut = "off";
+defparam \dout~1 .lut_mask = 64'h330F330F0F550F55;
+defparam \dout~1 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N20
+arriaii_lcell_comb \dout~2 (
+// Equation(s):
+// \dout~2_combout  = ( \direction~input_o  & ( (!\shift_value[0]~input_o  & (\mux1|out~0_combout )) # (\shift_value[0]~input_o  & ((\mux2|out~0_combout ))) ) ) # ( !\direction~input_o  & ( (!\shift_value[0]~input_o  & ((\mux2|out~0_combout ))) # 
+// (\shift_value[0]~input_o  & (\mux3|out~0_combout )) ) )
+
+	.dataa(!\mux3|out~0_combout ),
+	.datab(!\mux1|out~0_combout ),
+	.datac(!\mux2|out~0_combout ),
+	.datad(!\shift_value[0]~input_o ),
+	.datae(gnd),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\dout~2_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \dout~2 .extended_lut = "off";
+defparam \dout~2 .lut_mask = 64'h0F550F55330F330F;
+defparam \dout~2 .shared_arith = "off";
+// synopsys translate_on
+
+// Location: MLABCELL_X23_Y1_N26
+arriaii_lcell_comb \dout~3 (
+// Equation(s):
+// \dout~3_combout  = ( \shift_value[0]~input_o  & ( \direction~input_o  & ( \mux1|out~0_combout  ) ) ) # ( !\shift_value[0]~input_o  & ( \direction~input_o  & ( \mux0|out~0_combout  ) ) ) # ( \shift_value[0]~input_o  & ( !\direction~input_o  & ( 
+// (\select~input_o  & \mux0|out~0_combout ) ) ) ) # ( !\shift_value[0]~input_o  & ( !\direction~input_o  & ( \mux3|out~0_combout  ) ) )
+
+	.dataa(!\mux3|out~0_combout ),
+	.datab(!\mux1|out~0_combout ),
+	.datac(!\select~input_o ),
+	.datad(!\mux0|out~0_combout ),
+	.datae(!\shift_value[0]~input_o ),
+	.dataf(!\direction~input_o ),
+	.datag(gnd),
+	.cin(gnd),
+	.sharein(gnd),
+	.combout(\dout~3_combout ),
+	.sumout(),
+	.cout(),
+	.shareout());
+// synopsys translate_off
+defparam \dout~3 .extended_lut = "off";
+defparam \dout~3 .lut_mask = 64'h5555000F00FF3333;
+defparam \dout~3 .shared_arith = "off";
+// synopsys translate_on
+
+assign dout[0] = \dout[0]~output_o ;
+
+assign dout[1] = \dout[1]~output_o ;
+
+assign dout[2] = \dout[2]~output_o ;
+
+assign dout[3] = \dout[3]~output_o ;
+
+endmodule
